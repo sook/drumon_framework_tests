@@ -10,7 +10,8 @@
 	// Application Domain
 	define('APP_DOMAIN','http://local.dev');
 	define('LANGUAGE','pt-BR');
-	define('REQUEST_TOKEN','123456');
+	define('APP_SECRET','123456');
+	define('REQUEST_TOKEN',Drumon::create_request_token());
 	
 	// Application Paths
 	define('STYLESHEETS_PATH', APP_DOMAIN.'/public/stylesheets/');

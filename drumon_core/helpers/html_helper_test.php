@@ -3,11 +3,12 @@
 	require_once CORE_PATH. '/class/helper.php';
 	require_once CORE_PATH. '/helpers/html_helper.php';
 	require_once CORE_PATH. '/helpers/text_helper.php';
+	require_once CORE_PATH. '/class/request_handler.php';
 	
 	class HtmlHelperTest extends PHPUnit_Framework_TestCase {
 		
 		public function setUp() {
-			$this->request = $this->getMock('RequestHandler');
+			$this->request = $this->getMock('RequestHandler',array(),array(array()));
 			$this->html = new HtmlHelper($this->request);
 		}
 		
@@ -145,12 +146,12 @@
 		// Method: form
 		public function test_form_with_method_post() {
 			$result = $this->html->form('comment');
-			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="123456"><input type="hidden" name="_method" value="post">',$result);
+			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="'.REQUEST_TOKEN.'"><input type="hidden" name="_method" value="post">',$result);
 		}
 		
 		public function test_form_with_method_put() {
 			$result = $this->html->form('comment','put');
-			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="123456"><input type="hidden" name="_method" value="put">',$result);
+			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="'.REQUEST_TOKEN.'"><input type="hidden" name="_method" value="put">',$result);
 		}
 		
 		public function test_form_with_method_get() {
@@ -160,7 +161,7 @@
 		
 		public function test_form_with_options() {
 			$result = $this->html->form('comment','post',array('id'=>'comment'));
-			$this->assertEquals('<form action="comment" method="post" id="comment" ><input type="hidden" name="_token" value="123456"><input type="hidden" name="_method" value="post">',$result);
+			$this->assertEquals('<form action="comment" method="post" id="comment" ><input type="hidden" name="_token" value="'.REQUEST_TOKEN.'"><input type="hidden" name="_method" value="post">',$result);
 		}
 		
 		
