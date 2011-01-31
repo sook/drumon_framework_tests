@@ -2,8 +2,23 @@
 
 	require_once CORE_PATH. '/class/drumon.php';
 	require_once CORE_PATH. '/class/request_handler.php';
+
 	
 	class DrumonTest extends PHPUnit_Framework_TestCase {
+		
+		
+		// // Method: execute_controller
+		// 		public function test_execute_controller_home() {
+		// 			$request = $this->getMock('RequestHandler',array(),array(array()));
+		// 			$request->method = 'get';
+		// 			$request->controller_name = 'Home';
+		// 			$request->action_name = 'index';
+		// 			$request->params = array();
+		// 			
+		// 			
+		// 			$html = Drumon::execute_controller($request);
+		// 			
+		// 		}
 		
 		
 		// Method: create_request_token

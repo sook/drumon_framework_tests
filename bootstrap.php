@@ -17,6 +17,7 @@
 	define('STYLESHEETS_PATH', APP_DOMAIN.'/public/stylesheets/');
 	define('JAVASCRIPTS_PATH', APP_DOMAIN.'/public/javascripts/');
 	define('IMAGES_PATH',      APP_DOMAIN.'/public/images/');
+	define('MODULES_PATH',		 APP_DOMAIN.'/public/modules/');
 	
 	// 
 	define('JS_FRAMEWORK','jquery');

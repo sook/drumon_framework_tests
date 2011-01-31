@@ -18,7 +18,7 @@
 			$this->assertEquals('nao-da-certo-isso-eu-sei-sim',$result);
 		}
 		
-		public function test_to_slug_with_space() {
+		public function test_to_slug_with_other_separator() {
 			$result = $this->text->to_slug('Não? da çerto isso  eu sei - sim','_');
 			$this->assertEquals('nao_da_certo_isso_eu_sei_sim',$result);
 		}
@@ -87,6 +87,13 @@
 		public function test_excerpt_with_small_text() {
 			$result = $this->text->excerpt('hoje','aqui',8);
 			$this->assertEquals('hoje',$result);
+		}
+		
+		
+		// Method: translate
+		public function test_translate() {
+			$result = $this->text->translate('application.your_word');
+			$this->assertEquals('Sua palavra',$result);
 		}
 		
 		
