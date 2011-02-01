@@ -21,4 +21,8 @@
 	
 	// 
 	define('JS_FRAMEWORK','jquery');
+	
+	
+	// Método da requisição padrão.
+	$_SERVER['REQUEST_METHOD'] = 'get';
 ?>

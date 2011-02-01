@@ -3,6 +3,7 @@
 	require_once 'text_helper_test.php';
 	require_once 'date_helper_test.php';
 	require_once 'url_helper_test.php';
+	require_once 'image_helper_test.php';
 	// ...
 
 	class DrumonCore_Helpers_All {
@@ -12,6 +13,7 @@
 			$suite->addTestSuite('TextHelperTest');
 			$suite->addTestSuite('DateHelperTest');
 			$suite->addTestSuite('UrlHelperTest');
+			$suite->addTestSuite('ImageHelperTest');
 			// ...
 			return $suite;
 		}

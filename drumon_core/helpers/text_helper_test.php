@@ -63,13 +63,18 @@
 		
 		// Method: truncate
 		public function test_truncate_with_max_6() {
-			$result = $this->text->truncate('meu texto aqui',6);
+			$result = $this->text->truncate('meu texto aqui', 6);
+			$this->assertEquals('meu te...',$result);
+		}
+		
+		public function test_truncate_with_max_6_not_exact() {
+			$result = $this->text->truncate('meu texto aqui', 6,array('exact' => false));
 			$this->assertEquals('meu...',$result);
 		}
 		
-		public function test_truncate_with_html_option() {
-			$result = $this->text->truncate('meu <strong>texto <em>aqui</em></strong>',6,array('html'=>true));
-			$this->assertEquals('meu...',$result);
+		public function test_truncate_with_text_small_then_max() {
+			$result = $this->text->truncate('meu', 6);
+			$this->assertEquals('meu',$result);
 		}
 		
 		
@@ -81,11 +86,13 @@
 		
 		public function test_excerpt_without_text() {
 			$result = $this->text->excerpt('meu texto aqui bem grande','',8);
-			$this->assertEquals('meu texto aqu...',$result);
+			$this->assertEquals('meu texto aqui b...',$result);
 		}
 		
+		
+		
 		public function test_excerpt_with_small_text() {
-			$result = $this->text->excerpt('hoje','aqui',8);
+			$result = $this->text->excerpt('hoje','aqui',1);
 			$this->assertEquals('hoje',$result);
 		}
 		
