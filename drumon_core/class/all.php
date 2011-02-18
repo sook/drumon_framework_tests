@@ -2,6 +2,9 @@
 	require_once 'drumon_test.php';
 	require_once 'helper_test.php';
 	require_once 'request_handler_test.php';
+	require_once 'event_test.php';
+	require_once 'template_test.php';
+	require_once 'controller_test.php';
 	// ...
  
 	class DrumonCore_Class_All  {
@@ -11,6 +14,9 @@
 			$suite->addTestSuite('DrumonTest');
 			$suite->addTestSuite('HelperTest');
 			$suite->addTestSuite('RequestHandlerTest');
+			$suite->addTestSuite('EventTest');
+			$suite->addTestSuite('TemplateTest');
+			$suite->addTestSuite('ControllerTest');
 			// ...
 
 			return $suite;

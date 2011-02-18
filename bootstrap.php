@@ -1,5 +1,5 @@
 <?php
-	
+	define('TEST_ROOT', dirname(__FILE__));
 	define('ROOT', dirname(realpath('../drumon_framework/your_app_name/index.php')));
 	define('CORE_PATH', ROOT.'/vendor/drumon_core');
 	
