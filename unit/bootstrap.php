@@ -1,6 +1,6 @@
 <?php
 	define('TEST_ROOT', dirname(__FILE__));
-	define('ROOT', dirname(realpath('../drumon_framework/your_app_name/index.php')));
+	define('ROOT', dirname(realpath('../../drumon_framework/your_app_name/index.php'))); // TODO: melhorar
 	define('CORE_PATH', ROOT.'/vendor/drumon_core');
 	
 	
