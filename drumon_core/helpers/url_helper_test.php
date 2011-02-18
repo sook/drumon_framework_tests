@@ -37,6 +37,17 @@
 			$this->assertEquals('http://local.dev/home',$result);
 		}
 		
+		public function test_to_named_route_with_param() {
+			$route['get']['/home/:teste'] = array('Home','index','as'=>'home');
+			$_SERVER['REQUEST_METHOD'] = 'get';
+			$_SERVER['REQUEST_URI'] = '/home/2';
+			$request = new RequestHandler($route);
+			$url = new UrlHelper($request);
+			
+			$result = $url->to_home('2');
+			$this->assertEquals('http://local.dev/home/2',$result);
+		}
+		
 		/**
 		 * @expectedException PHPUnit_Framework_Error
 		 */
