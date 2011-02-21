@@ -1,5 +1,5 @@
 <?php
-	require_once 'drumon_test.php';
+	require_once 'app_test.php';
 	require_once 'helper_test.php';
 	require_once 'request_handler_test.php';
 	require_once 'event_test.php';
@@ -11,7 +11,7 @@
 		
 		public static function suite() {
 			$suite = new PHPUnit_Framework_TestSuite('Drumon Framework All Class');
-			$suite->addTestSuite('DrumonTest');
+			$suite->addTestSuite('AppTest');
 			$suite->addTestSuite('HelperTest');
 			$suite->addTestSuite('RequestHandlerTest');
 			$suite->addTestSuite('EventTest');

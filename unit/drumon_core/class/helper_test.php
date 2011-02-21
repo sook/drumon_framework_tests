@@ -10,7 +10,7 @@
 		// Method: sprintf2
 		public function test_sprintf2_with_one_value() {
 			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->helper = new TextHelper($this->request);
+			$this->helper = new TextHelper($this->request,'pt-BR');
 			
 			$text = "hello world %name";
 			$result = $this->helper->sprintf2($text,array('name'=>'drumon'));
@@ -20,7 +20,7 @@
 		
 		public function test_sprintf2_with_two_values() {
 			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->helper = new TextHelper($this->request);
+			$this->helper = new TextHelper($this->request,'pt-BR');
 			
 			$text = "hello world %name! you are %X";
 			$result = $this->helper->sprintf2($text,array('name'=>'drumon','X'=>'ninja'));
@@ -30,7 +30,7 @@
 		
 		public function test_sprintf2_without_value() {
 			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->helper = new TextHelper($this->request);
+			$this->helper = new TextHelper($this->request,'pt-BR');
 			
 			$text = "hello world %name";
 			$result = $this->helper->sprintf2($text);

@@ -9,8 +9,8 @@
 		
 		public function setUp() {
 			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->date = new DateHelper($this->request);
-			$this->date->text = new TextHelper($this->request);
+			$this->date = new DateHelper($this->request,'pt-BR');
+			$this->date->text = new TextHelper($this->request,'pt-BR');
 		}
 		
 		

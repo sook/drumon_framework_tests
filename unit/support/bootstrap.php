@@ -1,17 +1,21 @@
 <?php
-	define('TEST_ROOT', dirname(__FILE__));
+
+	define('UNIT_PATH', dirname(dirname(__FILE__)));
+	define('SUPPORT_PATH', UNIT_PATH.'/support');
+	define('ASSETS_PATH', UNIT_PATH.'/support/assets');
+	
 	define('ROOT', dirname(realpath('../../drumon_framework/your_app_name/index.php'))); // TODO: melhorar
 	define('CORE_PATH', ROOT.'/vendor/drumon_core');
 	
 	
-	require_once(CORE_PATH.'/class/drumon.php');
+	require_once(CORE_PATH.'/class/app.php');
 	
 	
 	// Application Domain
 	define('APP_DOMAIN','http://local.dev');
-	define('LANGUAGE','pt-BR');
+
 	define('APP_SECRET','123456');
-	define('REQUEST_TOKEN',Drumon::create_request_token());
+	define('REQUEST_TOKEN',App::create_request_token());
 	
 	// Application Paths
 	define('STYLESHEETS_PATH', APP_DOMAIN.'/public/stylesheets/');

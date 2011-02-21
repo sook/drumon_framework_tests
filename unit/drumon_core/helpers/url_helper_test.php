@@ -9,7 +9,7 @@
 		
 		public function setUp() {
 			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->url = new UrlHelper($this->request);
+			$this->url = new UrlHelper($this->request,'pt-BR');
 		}
 		
 		
@@ -31,7 +31,7 @@
 			$_SERVER['REQUEST_METHOD'] = 'get';
 			$_SERVER['REQUEST_URI'] = '/home';
 			$request = new RequestHandler($route);
-			$url = new UrlHelper($request);
+			$url = new UrlHelper($request,'pt-BR');
 			
 			$result = $url->to_home();
 			$this->assertEquals('http://local.dev/home',$result);
@@ -42,7 +42,7 @@
 			$_SERVER['REQUEST_METHOD'] = 'get';
 			$_SERVER['REQUEST_URI'] = '/home/2';
 			$request = new RequestHandler($route);
-			$url = new UrlHelper($request);
+			$url = new UrlHelper($request,'pt-BR');
 			
 			$result = $url->to_home('2');
 			$this->assertEquals('http://local.dev/home/2',$result);
@@ -56,7 +56,7 @@
 			$_SERVER['REQUEST_METHOD'] = 'get';
 			$_SERVER['REQUEST_URI'] = '/home';
 			$request = new RequestHandler($route);
-			$url = new UrlHelper($request);
+			$url = new UrlHelper($request,'pt-BR');
 			
 			$result = $url->to_me();
 			$this->assertEquals('http://local.dev/home',$result);
@@ -70,7 +70,7 @@
 			$_SERVER['REQUEST_METHOD'] = 'get';
 			$_SERVER['REQUEST_URI'] = '/home';
 			$request = new RequestHandler($route);
-			$url = new UrlHelper($request);
+			$url = new UrlHelper($request,'pt-BR');
 			
 			$result = $url->tao_me();
 			$this->assertEquals('http://local.dev/home',$result);

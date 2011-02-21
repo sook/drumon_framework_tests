@@ -12,21 +12,21 @@
 		
 		// Method: render_file
 		public function test_render_file() {
-			$result = $this->template->render_file(TEST_ROOT.'/drumon_core/class/assets/template_test1.php');
+			$result = $this->template->render_file(ASSETS_PATH.'/template_test1.php');
 			
 			$this->assertEquals('Hello',$result);
 		}
 		
 		public function test_render_file_and_var() {
 			$this->template->add('world','World');
-			$result = $this->template->render_file(TEST_ROOT.'/drumon_core/class/assets/template_test2.php');
+			$result = $this->template->render_file(ASSETS_PATH.'/template_test2.php');
 			
 			$this->assertEquals('Hello World',$result);
 		}
 		
 		public function test_render_file_with_gzip() {
 			$this->template = new Template(array(), true);
-			$result = $this->template->render_file(TEST_ROOT.'/drumon_core/class/assets/template_test1.php');
+			$result = $this->template->render_file(ASSETS_PATH.'/template_test1.php');
 			
 			$this->assertEquals('Hello',$result);
 		}

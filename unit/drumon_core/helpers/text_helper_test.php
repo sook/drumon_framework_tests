@@ -8,7 +8,7 @@
 		
 		public function setUp() {
 			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->text = new TextHelper($this->request);
+			$this->text = new TextHelper($this->request,'pt-BR');
 		}
 		
 		
@@ -106,7 +106,7 @@
 		
 		// Method: t
 		public function test_translate_shortcut() {
-			$html = $this->getMock('TextHelper',array('translate'),array($this->request));
+			$html = $this->getMock('TextHelper',array('translate'),array($this->request,'pt-BR'));
 			$html->expects($this->once())->method('translate')->with($this->equalTo('Date.name'));
 			$html->t('Date.name');
 		}
