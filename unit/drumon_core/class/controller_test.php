@@ -65,14 +65,14 @@
 		}
 		
 		
-		// Method: helpers
+		// Method: add_helpers
 		public function test_helpers_with_array() {
 			$app = App::get_instance();
 			$request = $this->getMock('RequestHandler',array(),array(array()));
 			$template = $this->getMock('Template',array('add'),array(array(),false));
 			$controller = new Controller($app, $request,$template,'aa', 'a');
 			
-			$controller->helpers(array('text','html'));
+			$controller->add_helpers(array('text','html'));
 			
 			$this->assertEquals(array('text','html'),$this->readAttribute($controller->app,'helpers'));
 		}
@@ -85,7 +85,7 @@
 			
 			// Reseta o singleton
 			$controller->app->helpers = array();
-			$controller->helpers('text');
+			$controller->add_helpers('text');
 			
 			$this->assertEquals(array('text'),$this->readAttribute($controller->app,'helpers'));
 		}
