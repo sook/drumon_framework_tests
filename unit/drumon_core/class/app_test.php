@@ -9,8 +9,8 @@
 		
 		// Method: get_instance
 		public function test_get_instance() {
-			$drumon = App::get_instance();
-			$this->assertTrue( $drumon instanceof App);
+			$app = App::get_instance();
+			$this->assertTrue( $app instanceof App);
 		}
 		
 		public function test_drumon_singleton() {
@@ -24,20 +24,24 @@
 		 * @expectedException BadMethodCallException
 		 */
 		public function test_drumon_clone() {
-			$drumon = App::get_instance();
-			$drumon = clone($drumon);
+			$app = App::get_instance();
+			$app = clone($app);
 		}
 		
 		
 		// Method: create_request_token
 		public function test_create_request_token_shoud_have_two_parts() {
-			$token = App::create_request_token();
+			$app = App::get_instance();
+			$app->config['app_secret'] = APP_SECRET;
+			$token = $app->create_request_token();
 			$parts = explode('-',$token);
 			$this->assertEquals(2,count($parts));
 		}
 		
 		public function test_create_request_token_should_be_valid() {
-			$token = App::create_request_token();
+			$app = App::get_instance();
+			$app->config['app_secret'] = APP_SECRET;
+			$token = $app->create_request_token();
 			$parts = explode('-',$token);
 			list($token, $hash) = $parts;
 			$this->assertEquals($hash,sha1(APP_SECRET.APP_DOMAIN.'-'.$token));
@@ -56,12 +60,16 @@
 		}
 		
 		public function test_block_csrf_protection_with_token() {
-			 $request = $this->getMock('RequestHandler',array(),array(array()));
-			 $request->method = 'post';
-			 $request->params = array('_token' => REQUEST_TOKEN);
-			 
-			 $blocked = App::block_csrf_protection($request);
-			 $this->assertFalse($blocked);
+			$request = $this->getMock('RequestHandler',array(),array(array()));
+			$request->method = 'post';
+
+			$app = App::get_instance();
+			$app->config['app_secret'] = APP_SECRET;
+
+			$request->params = array('_token' => $app->create_request_token());
+
+			$blocked = App::block_csrf_protection($request);
+			$this->assertFalse($blocked);
 		}
 		
 		public function test_block_csrf_protection_with_method_get() {

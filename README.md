@@ -8,6 +8,7 @@ Para roda basta excutar o comando `phpunit all` dentro da pasta unit
 
 ## BDD
 
-Para rodar o comportamento do framework é necessário entrar na pasta bdd e rodar o comando `cucumber`
+Passos para rodar o teste:
 
-OBS: app de teste não ta no repositório.
+* Criar um link simbólico da pasta vendor do código fonte para a aplicação de testes (app_mock)
+* Para rodar os teste entre na pasta bdd e digite `cucumber`

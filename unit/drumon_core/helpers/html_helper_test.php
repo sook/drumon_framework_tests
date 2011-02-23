@@ -146,12 +146,12 @@
 		// Method: form
 		public function test_form_with_method_post() {
 			$result = $this->html->form('comment');
-			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="'.REQUEST_TOKEN.'"><input type="hidden" name="_method" value="post">',$result);
+			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="post">',$result);
 		}
 		
 		public function test_form_with_method_put() {
 			$result = $this->html->form('comment','put');
-			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="'.REQUEST_TOKEN.'"><input type="hidden" name="_method" value="put">',$result);
+			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="put">',$result);
 		}
 		
 		public function test_form_with_method_get() {
@@ -161,7 +161,7 @@
 		
 		public function test_form_with_options() {
 			$result = $this->html->form('comment','post',array('id'=>'comment'));
-			$this->assertEquals('<form action="comment" method="post" id="comment" ><input type="hidden" name="_token" value="'.REQUEST_TOKEN.'"><input type="hidden" name="_method" value="post">',$result);
+			$this->assertEquals('<form action="comment" method="post" id="comment" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="post">',$result);
 		}
 		
 		

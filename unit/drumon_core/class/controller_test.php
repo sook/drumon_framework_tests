@@ -10,20 +10,20 @@
 		// Method: execute
 		
 		// TODO: ta certo esse teste ?
-		public function test_execute() {
-			$app = App::get_instance();
-			$request = $this->getMock('RequestHandler',array(),array(array()));
-			$controller = $this->getMock('Controller',array('home','execute_render','after_filter','before_filter'),array($app, $request,'template','namespace','classname'));
-			
-			
-			$controller->expects($this->once())->method('before_filter');
-			$controller->expects($this->once())->method('home');
-			$controller->expects($this->once())->method('after_filter');
-			
-			$controller->expects($this->once())->method('execute_render');
-			
-			$controller->execute('home');
-		}
+		// public function test_execute() {
+		// 	$app = App::get_instance();
+		// 	$request = $this->getMock('RequestHandler',array(),array(array()));
+		// 	$controller = $this->getMock('Controller',array('home','execute_render','after_filter','before_filter'),array($app, $request,'template','namespace','classname'));
+		// 	
+		// 	
+		// 	$controller->expects($this->once())->method('before_filter');
+		// 	$controller->expects($this->once())->method('home');
+		// 	$controller->expects($this->once())->method('after_filter');
+		// 	
+		// 	$controller->expects($this->once())->method('execute_render');
+		// 	
+		// 	$controller->execute('home');
+		// }
 		
 		
 		// Method: add

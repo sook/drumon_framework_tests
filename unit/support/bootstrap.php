@@ -15,7 +15,7 @@
 	define('APP_DOMAIN','http://local.dev');
 
 	define('APP_SECRET','123456');
-	define('REQUEST_TOKEN',App::create_request_token());
+	define('REQUEST_TOKEN','token');
 	
 	// Application Paths
 	define('STYLESHEETS_PATH', APP_DOMAIN.'/public/stylesheets/');

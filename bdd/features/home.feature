@@ -7,6 +7,6 @@ Feature: Check System routes
 		Given I am on home page
 		Then I should see "Bem Vindo"
 	
-	Scenario: Visit home page
+	Scenario: Visit about page
 		Given I am on about page
 		Then I should see "about_test"

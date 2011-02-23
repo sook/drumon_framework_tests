@@ -2,6 +2,4 @@ report/
 unit/report/
 
 bdd/webrat.log
-app_mock/
 app_mock/vendor/
-app_mock/index.php
