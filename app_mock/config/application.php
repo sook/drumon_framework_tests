@@ -1,7 +1,7 @@
 <?php
 
 	// Ambiente da aplicação. (development|production)
-	$app->config['env'] = isset($_SERVER['ENVIRONMENT']) ? $_SERVER['ENVIRONMENT'] : 'development';
+	$app->config['env'] = isset($_SERVER['ENVIRONMENT']) ? $_SERVER['ENVIRONMENT'] : 'production';
 	
 	// Linguagem da sua apicação. (pt-BR|en-US|...)
 	$app->config['language'] = 'pt-BR';

@@ -10,3 +10,7 @@ Feature: Check System routes
 	Scenario: Visit about page
 		Given I am on about page
 		Then I should see "about_test"
+		
+	Scenario: Test redirect router
+		Given I go to danillos page
+		Then URL should be "http://www.danillocesar.com.br/"

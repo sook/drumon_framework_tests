@@ -18,39 +18,73 @@
 #   session
 # end
 
+#$ROOT_PATH = File.expand_path(File.dirname(__FILE__))
 
-# RSpec
-require 'spec/expectations'
-
-# Webrat
-require 'webrat'
-
+require 'capybara'
+require 'capybara/cucumber'
+require 'cucumber/formatter/unicode'
+require 'rspec/expectations'
 require 'test/unit/assertions'
 World(Test::Unit::Assertions)
 
-Webrat.configure do |config|
-  config.mode = :mechanize
-end
 
-World do
-  session = Webrat::Session.new
-  session.extend(Webrat::Methods)
-  session.extend(Webrat::Matchers)
-  session
-end
+# mechanize
+require 'capybara/mechanize'
+Capybara.default_driver = :mechanize
 
-# Helper method for running shell commands
-def run(command, verbose = false, message = nil)
-  if verbose then
-    puts "#{message}"
-    puts command
-    result = `#{command}`
-    puts result
-    return result
-  else
-    `#{command}`
-  end
-end
+# selenium
+#require 'selenium-webdriver'
+#Selenium::WebDriver.for :firefox
+#Capybara.default_driver = :selenium
+
+
+Capybara.run_server = false 
+Capybara.app_host = 'http://localhost/sook/drumon_framework_tests/app_mock'
+Capybara.default_selector = :css
+
+
+
+
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Driver::Selenium
+#   profile = Selenium::WebDriver::Firefox::Profile.new
+#   profile.add_extension(File.expand_path("features/support/firebug.xpi"))
+# 
+#   Capybara::Driver::Selenium.new(app, { :browser => :firefox, :profile => profile })
+# end
+
+
+# # RSpec
+# require 'spec/expectations'
+# 
+# # Webrat
+# require 'webrat'
+# 
+
+# 
+# Webrat.configure do |config|
+#   config.mode = :mechanize
+# end
+# 
+# World do
+#   session = Webrat::Session.new
+#   session.extend(Webrat::Methods)
+#   session.extend(Webrat::Matchers)
+#   session
+# end
+# 
+# # Helper method for running shell commands
+# def run(command, verbose = false, message = nil)
+#   if verbose then
+#     puts "#{message}"
+#     puts command
+#     result = `#{command}`
+#     puts result
+#     return result
+#   else
+#     `#{command}`
+#   end
+# end
 
 
 
