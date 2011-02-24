@@ -55,7 +55,10 @@
 			$request->method = 'post';
 			$request->params = array();
 			
-			$blocked = App::block_csrf_protection($request);
+			$app = App::get_instance();
+			$app->config['app_secret'] = APP_SECRET;
+			
+			$blocked = $app->block_csrf_protection($request);
 			$this->assertTrue($blocked);
 		}
 		
@@ -68,7 +71,7 @@
 
 			$request->params = array('_token' => $app->create_request_token());
 
-			$blocked = App::block_csrf_protection($request);
+			$blocked = $app->block_csrf_protection($request);
 			$this->assertFalse($blocked);
 		}
 		
