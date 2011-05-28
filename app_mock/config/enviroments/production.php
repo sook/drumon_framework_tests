@@ -12,8 +12,8 @@
 	$app->config['db'] = array(
 		'host' => 'localhost',
 		'user' => 'root',
-		'password' => '',
-		'name' => 'database_name',
+		'password' => 'sook',
+		'database' => 'danillos',
 		'charset' => 'utf8'
 	);
 	

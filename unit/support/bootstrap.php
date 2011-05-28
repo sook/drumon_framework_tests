@@ -4,11 +4,17 @@
 	define('SUPPORT_PATH', UNIT_PATH.'/support');
 	define('ASSETS_PATH', UNIT_PATH.'/support/assets');
 	
-	define('ROOT', dirname(realpath('../../drumon_framework/your_app_name/index.php'))); // TODO: melhorar
-	define('CORE_PATH', ROOT.'/vendor/drumon_core');
+	//define('ROOT', dirname(realpath('../../drumon_framework/your_app_name/index.php'))); // TODO: melhorar
+	
+	//define('ROOT_PATH', dirname(realpath('../../drumon_framework/your_app_name/index.php')));
+	//define('CORE_PATH', ROOT_PATH.'/vendor/drumon_core');
 	
 	
-	require_once(CORE_PATH.'/class/app.php');
+	define('ROOT', '../app_mock');
+	define('CORE', '../app_mock/vendor/drumon_core');
+	
+	
+	require_once(CORE.'/class/app.php');
 	
 	
 	// Application Domain
@@ -16,6 +22,7 @@
 
 	define('APP_SECRET','123456');
 	define('REQUEST_TOKEN','token');
+	define('LANGUAGE','pt-BR');
 	
 	// Application Paths
 	define('STYLESHEETS_PATH', APP_DOMAIN.'/public/stylesheets/');

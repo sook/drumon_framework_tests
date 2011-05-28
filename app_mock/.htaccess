@@ -18,5 +18,17 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
-RewriteRule .* index.php?/$0 [PT]
-#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+#kohana
+#RewriteRule .* index.php?/$0 [PT]
+
+# sonic
+#RewriteRule \.*$ index.php [NC,L]
+
+# cake
+#RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+
+# doo
+RewriteRule .* index.php
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]

@@ -17,6 +17,7 @@
 		  <blacklist>
 		    <directory suffix=".php">./</directory>
 				<directory suffix=".php">../../drumon_framework/your_app_name/config/locales/pt-BR</directory>
+				<directory suffix=".php">../app_mock</directory>
 		    <!-- <file>/path/to/file</file> -->
 		    <!-- <exclude>
 		    		      <directory suffix=".php">/path/to/files</directory>

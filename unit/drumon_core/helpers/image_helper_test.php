@@ -1,7 +1,7 @@
 <?php
 	
-	require_once CORE_PATH. '/class/helper.php';
-	require_once CORE_PATH. '/helpers/image_helper.php';
+	require_once CORE. '/class/helper.php';
+	require_once CORE. '/helpers/image_helper.php';
 	
 	class ImageHelperTest extends PHPUnit_Framework_TestCase {
 		
@@ -15,7 +15,12 @@
 		// Method: resize
 		public function test_resize_300_300() {
 			$result = $this->image->resize('photo.png',300,300);
-			$this->assertEquals('http://local.dev/public/images/image.php/photo.png?width=300&height=300&cropratio=&image=photo.png', $result);
+			$this->assertEquals('http://local.dev/public/images/thumb.php?src=photo.png&w=300&h=300', $result);
+		}
+		
+		public function test_resize_300_300_with_options() {
+			$result = $this->image->resize('photo.png',300,300,array('q'=>80));
+			$this->assertEquals('http://local.dev/public/images/thumb.php?src=photo.png&w=300&h=300&q=80', $result);
 		}
 		
 		
@@ -29,12 +34,12 @@
 		
 		// Method: fake
 		public function test_fake() {
-			$result = $this->image->fake('200x200');
+			$result = $this->image->fake('200','200');
 			$this->assertEquals('<img src="http://placehold.it/200x200/">', $result);
 		}
 		
 		public function test_fake_with_text() {
-			$result = $this->image->fake('200x200','Hello');
+			$result = $this->image->fake('200','200','Hello');
 			$this->assertEquals('<img src="http://placehold.it/200x200/&text=Hello">', $result);
 		}
 	}

@@ -12,7 +12,6 @@
 			$suite->addTest(DrumonCore_Class_All::suite());
 			$suite->addTest(DrumonCore_Helpers_All::suite());
 			// ...
-
 			return $suite;
 		}
 

@@ -7,10 +7,10 @@
 	$app->config['language'] = 'pt-BR';
 	
 	// Helpers carregados automaticamente. (html,date,text,url,image)
-	$app->add_helpers(array('html','date','text','url'));
+	//$app->add_helpers(array('html','date','text','url','image'));
 	
 	// Plugins utilizados em sua app
-	//$app->add_plugins('drumon_model');
+	$app->add_plugins(array('teste','drumon_model'));
 	
 	// Javascript framework. (mootools|jquery)
 	$app->config['js_framework'] = 'jquery';

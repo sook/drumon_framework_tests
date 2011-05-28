@@ -1,8 +1,8 @@
 <?php
 	
-	require_once CORE_PATH. '/class/helper.php';
-	require_once CORE_PATH. '/helpers/url_helper.php';
-	require_once CORE_PATH. '/helpers/text_helper.php';
+	require_once CORE. '/class/helper.php';
+	require_once CORE. '/helpers/url_helper.php';
+	require_once CORE. '/helpers/text_helper.php';
 	
 	class UrlHelperTest extends PHPUnit_Framework_TestCase {
 		

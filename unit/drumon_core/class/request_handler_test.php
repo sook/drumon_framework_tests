@@ -1,6 +1,6 @@
 <?php
 
-	require_once CORE_PATH. '/class/request_handler.php';
+	require_once CORE. '/class/request_handler.php';
 
 	
 	class RequestHandlerTest extends PHPUnit_Framework_TestCase {

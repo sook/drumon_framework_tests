@@ -4,13 +4,14 @@ Feature: Check CSFR protection system
 	I want to see 401 unauthorized or 200 Ok
 
 	Scenario: Valid CSFR Token
-		Given I am on protected form page
+		Given I am on /csfr
 		When I fill in "comment" with "Hello World"
 		And I press "submit"
 		Then I should see "Hello World"
 	
 	Scenario: Invalid CSFR Token
-		Given I am on simple form page
+		Given I am on /csfr-invalid
 		When I fill in "comment" with "Hello World"
-		Then I press "submit" and should see status "401"
-		Then I should not see "Hello World"
+		And I press "submit"
+		Then the response status code should be 401
+		And I should not see "Hello World"

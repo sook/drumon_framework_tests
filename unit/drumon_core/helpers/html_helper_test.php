@@ -1,9 +1,9 @@
 <?php
 	
-	require_once CORE_PATH. '/class/helper.php';
-	require_once CORE_PATH. '/helpers/html_helper.php';
-	require_once CORE_PATH. '/helpers/text_helper.php';
-	require_once CORE_PATH. '/class/request_handler.php';
+	require_once CORE. '/class/helper.php';
+	require_once CORE. '/helpers/html_helper.php';
+	require_once CORE. '/helpers/text_helper.php';
+	require_once CORE. '/class/request_handler.php';
 	
 	class HtmlHelperTest extends PHPUnit_Framework_TestCase {
 		

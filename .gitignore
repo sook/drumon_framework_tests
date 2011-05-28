@@ -2,4 +2,9 @@ report/
 unit/report/
 
 bdd/webrat.log
-app_mock/vendor/
+app_mock/vendor/drumon_core/
+app_mock/vendor/drumon_core
+app_mock/vendor/plugins/drumon_model/
+app_mock/vendor/plugins/benchmark/
+app_mock/vendor/plugins/drumon_model
+app_mock/vendor/plugins/benchmark

@@ -1,7 +1,7 @@
 <?php
 	
-	require_once CORE_PATH. '/class/helper.php';
-	require_once CORE_PATH. '/helpers/text_helper.php';
+	require_once CORE. '/class/helper.php';
+	require_once CORE. '/helpers/text_helper.php';
 	
 	class TextHelperTest extends PHPUnit_Framework_TestCase {
 		
@@ -101,14 +101,6 @@
 		public function test_translate() {
 			$result = $this->text->translate('application.your_word');
 			$this->assertEquals('Sua palavra',$result);
-		}
-		
-		
-		// Method: t
-		public function test_translate_shortcut() {
-			$html = $this->getMock('TextHelper',array('translate'),array($this->request,'pt-BR'));
-			$html->expects($this->once())->method('translate')->with($this->equalTo('Date.name'));
-			$html->t('Date.name');
 		}
 	}
 

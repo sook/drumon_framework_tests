@@ -13,7 +13,7 @@
 		'host' => 'localhost',
 		'user' => 'root',
 		'password' => '',
-		'name' => 'database_name',
+		'database' => 'database_name',
 		'charset' => 'utf8'
 	);
 	
