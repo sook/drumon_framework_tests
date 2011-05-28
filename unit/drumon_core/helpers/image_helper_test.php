@@ -1,7 +1,7 @@
 <?php
 	
-	require_once CORE. '/class/helper.php';
-	require_once CORE. '/helpers/image_helper.php';
+	require_once CORE_PATH. '/class/helper.php';
+	require_once CORE_PATH. '/helpers/image_helper.php';
 	
 	class ImageHelperTest extends PHPUnit_Framework_TestCase {
 		

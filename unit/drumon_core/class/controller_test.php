@@ -1,9 +1,9 @@
 <?php
 
-	require_once CORE. '/class/request_handler.php';
-	require_once CORE. '/class/view.php';
-	require_once CORE. '/class/app.php';
-	require_once CORE. '/class/controller.php';
+	require_once CORE_PATH. '/class/request_handler.php';
+	require_once CORE_PATH. '/class/view.php';
+	require_once CORE_PATH. '/class/app.php';
+	require_once CORE_PATH. '/class/controller.php';
 
 	class ControllerTest extends PHPUnit_Framework_TestCase {
 		
@@ -32,7 +32,7 @@
 			$controller = new Controller($app, $request,$view,'aa', 'a');
 			
 			$controller->render('home');
-			$this->assertEquals('home',$this->readAttribute($controller,'view_name'));
+			$this->assertEquals('home', $this->readAttribute($controller, 'view_name'));
 		}
 		
 		

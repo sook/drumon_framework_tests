@@ -1,9 +1,9 @@
 <?php
 	
-	require_once CORE. '/class/helper.php';
-	require_once CORE. '/helpers/html_helper.php';
-	require_once CORE. '/helpers/text_helper.php';
-	require_once CORE. '/class/request_handler.php';
+	require_once CORE_PATH. '/class/helper.php';
+	require_once CORE_PATH. '/helpers/html_helper.php';
+	require_once CORE_PATH. '/helpers/text_helper.php';
+	require_once CORE_PATH. '/class/request_handler.php';
 	
 	class HtmlHelperTest extends PHPUnit_Framework_TestCase {
 		
@@ -36,35 +36,44 @@
 		
 		// Method: css
 		public function test_css_show_with_one_string_value() {
-			$result = $this->html->css('main','show');
+			$result = $this->html->css('main','header-only');
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
 		public function test_css_show_with_one_array_value() {
-			$result = $this->html->css(array('main'),'show');
+			$result = $this->html->css(array('main'),'header-only');
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
 		public function test_css_show_with_two_array_values() {
-			$result = $this->html->css(array('main','basic'),'show');
-			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/><link rel="stylesheet" href="'.STYLESHEETS_PATH.'basic.css" type="text/css" media="all"/>',$result);
+			$result = $this->html->css(array('main','basic'),'header-only');
+			
+			$js_array = array();
+			$js_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>';
+			$js_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'basic.css" type="text/css" media="all"/>';
+			$this->assertEquals(implode("\n",$js_array),$result);
 		}
 		
 		public function test_css_show_and_add_with_correct_order() {
 			$this->html->css('home');
-			$result = $this->html->css(array('main','basic'),'show');
-			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/><link rel="stylesheet" href="'.STYLESHEETS_PATH.'basic.css" type="text/css" media="all"/><link rel="stylesheet" href="'.STYLESHEETS_PATH.'home.css" type="text/css" media="all"/>',$result);
+			$result = $this->html->css(array('main','basic'),'header-only');
+			
+			$css_array = array();
+			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>';
+			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'basic.css" type="text/css" media="all"/>';
+			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'home.css" type="text/css" media="all"/>';
+			$this->assertEquals(implode("\n", $css_array), $result);
 		}
 		
 		public function test_css_add_with_one_value_and_null_show() {
 			$this->html->css('main');
-			$result = $this->html->css(null,'show');
+			$result = $this->html->css(null,'header-only');
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
 		public function test_css_add_with_one_value_empty_string_show() {
 			$this->html->css('main');
-			$result = $this->html->css('','show');
+			$result = $this->html->css('','header-only');
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
@@ -75,31 +84,46 @@
 		
 		public function test_css_with_options_media() {
 			$result = $this->html->css('page',null,'print');
-			$result = $this->html->css('main','show');
-			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/><link rel="stylesheet" href="'.STYLESHEETS_PATH.'page.css" type="text/css" media="print"/>',$result);
+			$result = $this->html->css('main','header-only');
+			$css_array = array();
+			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>';
+			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'page.css" type="text/css" media="print"/>';
+			$this->assertEquals(implode("\n", $css_array), $result);
 		}
 		
 		
 		// Method: js
 		public function test_js_show_with_one_string_value() {
-			$result = $this->html->js('main','show');
+			$result = $this->html->js('main','header-only');
 			$this->assertEquals('<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>',$result);
 		}
 		
 		public function test_js_show_with_one_array_value() {
-			$result = $this->html->js(array('main'),'show');
+			$result = $this->html->js(array('main'),'header-only');
 			$this->assertEquals('<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>',$result);
 		}
 		
 		public function test_js_show_with_two_array_values() {
-			$result = $this->html->js(array('main','basic'),'show');
-			$this->assertEquals('<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script><script type="text/javascript" src="'.JAVASCRIPTS_PATH.'basic.js"></script>',$result);
+			$result = $this->html->js(array('main','basic'),'header-only');
+			
+			$js_array = array();
+			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>';
+			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'basic.js"></script>';
+			
+			
+			$this->assertEquals(implode("\n", $js_array),$result);
 		}
 		
 		public function test_js_show_and_add_with_correct_order() {
 			$this->html->js('home');
-			$result = $this->html->js(array('main','basic'),'show');
-			$this->assertEquals('<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script><script type="text/javascript" src="'.JAVASCRIPTS_PATH.'basic.js"></script><script type="text/javascript" src="'.JAVASCRIPTS_PATH.'home.js"></script>',$result);
+			$result = $this->html->js(array('main','basic'),'header-only');
+			
+			$js_array = array();
+			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>';
+			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'basic.js"></script>';
+			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'home.js"></script>';
+			
+			$this->assertEquals(implode("\n", $js_array), $result);
 		}
 		
 		public function test_js_with_options_inline() {
@@ -197,7 +221,7 @@
 		
 		public function test_select_with_option_include_blank_true() {
 			$result = $this->html->select('sex',array('m'=>'Male','f'=>'Female'),array('include_blank'=>true));
-			$this->assertEquals('<select name="sex" ><option></option><option value="m">Male</option><option value="f">Female</option></select>',$result);
+			$this->assertEquals('<select name="sex" ><option value=""></option><option value="m">Male</option><option value="f">Female</option></select>',$result);
 		}
 		
 		public function test_select_with_option_include_blank_false() {
@@ -207,7 +231,7 @@
 		
 		public function test_select_with_option_include_blank_with_value() {
 			$result = $this->html->select('sex',array('m'=>'Male','f'=>'Female'),array('include_blank'=>'Select'));
-			$this->assertEquals('<select name="sex" ><option>Select</option><option value="m">Male</option><option value="f">Female</option></select>',$result);
+			$this->assertEquals('<select name="sex" ><option value="">Select</option><option value="m">Male</option><option value="f">Female</option></select>',$result);
 		}
 		
 		
@@ -222,13 +246,13 @@
 		public function test_select_date_months() {
 			$this->html->text = new TextHelper($this->request,'pt-BR');
 			$result = $this->html->select_date_months('month',array('selected' => 1));
-			$this->assertEquals('<select name="month" ><option selected value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option><option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option><option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option></select>',$result);
+			$this->assertEquals('<select name="month" ><option selected value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option><option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option><option value="7">Julho</option><option value="8">Agosto</option><option value="9">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option></select>',$result);
 		}
 		
 		// Method: select_date_days
 		public function test_select_date_days() {
 			$result = $this->html->select_date_days('day',array('selected'=>28));
-			$this->assertEquals('<select name="day" ><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option selected value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>',$result);
+			$this->assertEquals('<select name="day" ><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option selected value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>',$result);
 		}
 	}
 ?>

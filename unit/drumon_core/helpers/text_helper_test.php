@@ -1,7 +1,7 @@
 <?php
 	
-	require_once CORE. '/class/helper.php';
-	require_once CORE. '/helpers/text_helper.php';
+	require_once CORE_PATH. '/class/helper.php';
+	require_once CORE_PATH. '/helpers/text_helper.php';
 	
 	class TextHelperTest extends PHPUnit_Framework_TestCase {
 		

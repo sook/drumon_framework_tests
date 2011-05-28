@@ -10,11 +10,11 @@
 	//define('CORE_PATH', ROOT_PATH.'/vendor/drumon_core');
 	
 	
-	define('ROOT', '../app_mock');
-	define('CORE', '../app_mock/vendor/drumon_core');
+	define('APP_PATH', '../app_mock');
+	define('CORE_PATH', '../app_mock/vendor/drumon_core');
 	
 	
-	require_once(CORE.'/class/app.php');
+	require_once(CORE_PATH.'/class/app.php');
 	
 	
 	// Application Domain

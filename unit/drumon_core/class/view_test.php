@@ -1,6 +1,6 @@
 <?php
 	
-	require_once CORE. '/class/view.php';
+	require_once CORE_PATH. '/class/view.php';
 
 	class ViewTest extends PHPUnit_Framework_TestCase {
 		
@@ -35,14 +35,14 @@
 		// Method: render
 		public function test_render() {
 			$view = $this->getMock('View',array('render_file'),array(array(),false));
-			$view->expects($this->once())->method('render_file')->with(ROOT.'/app/views/me.php');
+			$view->expects($this->once())->method('render_file')->with(APP_PATH.'/app/views/me.php');
 			
 			$view->render('me');
 		}
 		
 		public function test_render_with_absolute_path() {
 			$view = $this->getMock('View',array('render_file'),array(array(),false));
-			$view->expects($this->once())->method('render_file')->with(ROOT.'/me.php');
+			$view->expects($this->once())->method('render_file')->with(APP_PATH.'/me.php');
 			
 			$view->render('/me');
 		}
@@ -51,7 +51,7 @@
 		// Method: partial
 		public function test_partial() {
 			$view = $this->getMock('View',array('render_file'),array(array(),false));
-			$view->expects($this->once())->method('render_file')->with(ROOT.'/app/views/partials/me.php');
+			$view->expects($this->once())->method('render_file')->with(APP_PATH.'/app/views/partials/me.php');
 			
 			$view->partial('me');
 		}
