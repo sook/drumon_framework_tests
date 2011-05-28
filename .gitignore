@@ -8,3 +8,6 @@ app_mock/vendor/plugins/drumon_model/
 app_mock/vendor/plugins/benchmark/
 app_mock/vendor/plugins/drumon_model
 app_mock/vendor/plugins/benchmark
+
+app_mock/public/images/cache/
+app_mock/public/images/cache
