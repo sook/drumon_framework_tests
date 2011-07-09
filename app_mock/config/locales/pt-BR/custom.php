@@ -1,7 +1,7 @@
 <?php
 	
 	return array(
-		'Hello Boy' => 'Olá Garoto'
+		'hello_boy' => 'Olá Garoto'
 	);
 	
 ?>

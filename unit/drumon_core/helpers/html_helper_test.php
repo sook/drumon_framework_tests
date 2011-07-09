@@ -174,17 +174,17 @@
 		}
 		
 		public function test_form_with_method_put() {
-			$result = $this->html->form('comment','put');
+			$result = $this->html->form('comment',array('method'=>'put'));
 			$this->assertEquals('<form action="comment" method="post" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="put">',$result);
 		}
 		
 		public function test_form_with_method_get() {
-			$result = $this->html->form('comment','get');
+			$result = $this->html->form('comment',array('method'=>'get'));
 			$this->assertEquals('<form action="comment" method="get" >',$result);
 		}
 		
 		public function test_form_with_options() {
-			$result = $this->html->form('comment','post',array('id'=>'comment'));
+			$result = $this->html->form('comment',array('id'=>'comment'));
 			$this->assertEquals('<form action="comment" method="post" id="comment" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="post">',$result);
 		}
 		

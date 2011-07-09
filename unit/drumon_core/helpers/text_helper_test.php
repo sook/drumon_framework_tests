@@ -99,8 +99,35 @@
 		
 		// Method: translate
 		public function test_translate() {
-			$result = $this->text->translate('application.your_word');
-			$this->assertEquals('Sua palavra',$result);
+			$result = $this->text->translate('your_word');
+			$this->assertEquals('Sua palavra', $result);
+		}
+		
+		public function test_translate_namespace() {
+			$result = $this->text->translate('user.name');
+			$this->assertEquals('Danillo', $result);
+		}
+		
+		public function test_translate_custom_file() {
+			$result = $this->text->translate('hello_boy', array('from'=>'custom'));
+			$this->assertEquals('Olá Garoto', $result);
+		}
+		
+		public function test_translate_pluralization() {
+			$result = $this->text->translate('records', array('count' => 0));
+			$this->assertEquals('nenhum registro', $result);
+			
+			$result = $this->text->translate('records', array('count' => 1));
+			$this->assertEquals('um registro', $result);
+			
+			$result = $this->text->translate('records', array('count' => 2));
+			$this->assertEquals('dois registros', $result);
+			
+			$result = $this->text->translate('records', array('count' => 3));
+			$this->assertEquals('3 registros', $result);
+			
+			$result = $this->text->translate('records', array('count' => 4));
+			$this->assertEquals('4 registros', $result);
 		}
 	}
 

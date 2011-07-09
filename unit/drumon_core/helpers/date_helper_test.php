@@ -30,7 +30,7 @@
 		public function test_show_with_invalid_format() {
 			$date = date('Y-m-d', strtotime('2010-01-31 00:00:00'));
 			$result = $this->date->show($date,'ninja_format');
-			$this->assertEquals('date.ninja_format',$result);
+			$this->assertEquals('date.formats.ninja_format',$result);
 		}
 		
 		
