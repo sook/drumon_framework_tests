@@ -14,8 +14,8 @@
 		
 		
 		function variables() {
-			$this->add('var1',$this->params['var']);
-			$this->add('var2',$this->params['query']);
+			$this->add('var1', $this->params['var']);
+			$this->add('var2', $this->params['query']);
 		}
 		
 	}

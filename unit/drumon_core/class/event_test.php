@@ -17,27 +17,6 @@
 			$this->assertEquals($instance1, $instance2, 'For a singleton partner this two instaces should be equals.');
 		}
 		
-		
-		// Method: add / fire
-		public function test_event_with_param() {
-			Event::add('init', array('EventTest','action'));
-			
-			$value = 'Hello';
-			Event::fire('init', &$value);
-			
-			$this->assertEquals('Hello World',$value);
-		}
-		
-		public function test_two_events_with_param() {
-			Event::add('init2', array('EventTest','action'));
-			Event::add('init2', array('EventTest','action2'));
-			
-			$value = 'Hello';
-			Event::fire('init2', &$value);
-			
-			$this->assertEquals('Hello World Drumon',$value);
-		}
-		
 		/**
 		 * @expectedException BadMethodCallException
 		 */
@@ -47,13 +26,7 @@
 		}
 		
 		
-		public function action($text) {
-			 $text .= ' World';
-		}
 		
-		public function action2($text) {
-			 $text .= ' Drumon';
-		}
 		
 	}
 ?>

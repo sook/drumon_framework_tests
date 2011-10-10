@@ -1,3 +1,3 @@
 <?= t('Hello World') ?>
 
-<?= t('custom.Hello Boy') ?>
+<?= t('hello_boy', array('from' => 'custom')) ?>

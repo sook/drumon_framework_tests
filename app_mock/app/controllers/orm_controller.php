@@ -61,8 +61,10 @@
 		
 		public function increment_decrement() {
 			$post = new Post();
-			
-			echo $post->decrement(1,'comments_count');
+			$post->create(array('title'=>'Create 1','content'=>'danillo'));
+			$post->delete();
+		//	print_r($post);
+			//echo $post->increment(1, 'comments_count';
 			$this->render_text('a');
 			
 		}
@@ -82,6 +84,16 @@
 			$post->where(array('id'=>array($post->id, $post->id-1)))->delete_all();
 			
 			$this->render_text('Hooks tests');
+		}
+		
+		
+		
+		public function dev() {
+			$post = new Post();
+			$page_number = isset($this->params['page']) ? $this->params['page'] : 1;
+			$posts = $post->page($page_number);
+			
+			$this->add('posts',$posts);
 		}
 		
 	}

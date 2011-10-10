@@ -3,13 +3,13 @@
 	require_once CORE_PATH. '/class/helper.php';
 	require_once CORE_PATH. '/helpers/html_helper.php';
 	require_once CORE_PATH. '/helpers/text_helper.php';
-	require_once CORE_PATH. '/class/request_handler.php';
+	require_once CORE_PATH. '/class/request.php';
 	
 	class HtmlHelperTest extends PHPUnit_Framework_TestCase {
 		
 		public function setUp() {
-			$this->request = $this->getMock('RequestHandler',array(),array(array()));
-			$this->html = new HtmlHelper($this->request,'pt-BR');
+			$this->request = $this->getMock('Request', array(), array(array(), APP_PATH));
+			$this->html = new HtmlHelper($this->request, 'pt-BR');
 		}
 		
 		// Method: block
@@ -36,17 +36,17 @@
 		
 		// Method: css
 		public function test_css_show_with_one_string_value() {
-			$result = $this->html->css('main','header-only');
+			$result = $this->html->styles('main');
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
 		public function test_css_show_with_one_array_value() {
-			$result = $this->html->css(array('main'),'header-only');
+			$result = $this->html->styles(array('main'));
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
 		public function test_css_show_with_two_array_values() {
-			$result = $this->html->css(array('main','basic'),'header-only');
+			$result = $this->html->styles(array('main','basic'));
 			
 			$js_array = array();
 			$js_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>';
@@ -56,7 +56,7 @@
 		
 		public function test_css_show_and_add_with_correct_order() {
 			$this->html->css('home');
-			$result = $this->html->css(array('main','basic'),'header-only');
+			$result = $this->html->styles(array('main','basic'));
 			
 			$css_array = array();
 			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>';
@@ -67,13 +67,13 @@
 		
 		public function test_css_add_with_one_value_and_null_show() {
 			$this->html->css('main');
-			$result = $this->html->css(null,'header-only');
+			$result = $this->html->styles(null);
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
 		public function test_css_add_with_one_value_empty_string_show() {
 			$this->html->css('main');
-			$result = $this->html->css('','header-only');
+			$result = $this->html->styles('');
 			$this->assertEquals('<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>',$result);
 		}
 		
@@ -83,8 +83,8 @@
 		}
 		
 		public function test_css_with_options_media() {
-			$result = $this->html->css('page',null,'print');
-			$result = $this->html->css('main','header-only');
+			$result = $this->html->css('page','header','print');
+			$result = $this->html->styles('main');
 			$css_array = array();
 			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'main.css" type="text/css" media="all"/>';
 			$css_array[] = '<link rel="stylesheet" href="'.STYLESHEETS_PATH.'page.css" type="text/css" media="print"/>';
@@ -94,17 +94,17 @@
 		
 		// Method: js
 		public function test_js_show_with_one_string_value() {
-			$result = $this->html->js('main','header-only');
+			$result = $this->html->scripts('main');
 			$this->assertEquals('<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>',$result);
 		}
 		
 		public function test_js_show_with_one_array_value() {
-			$result = $this->html->js(array('main'),'header-only');
+			$result = $this->html->scripts(array('main'));
 			$this->assertEquals('<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>',$result);
 		}
 		
 		public function test_js_show_with_two_array_values() {
-			$result = $this->html->js(array('main','basic'),'header-only');
+			$result = $this->html->scripts(array('main','basic'));
 			
 			$js_array = array();
 			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>';
@@ -116,7 +116,7 @@
 		
 		public function test_js_show_and_add_with_correct_order() {
 			$this->html->js('home');
-			$result = $this->html->js(array('main','basic'),'header-only');
+			$result = $this->html->scripts(array('main','basic'));
 			
 			$js_array = array();
 			$js_array[] = '<script type="text/javascript" src="'.JAVASCRIPTS_PATH.'main.js"></script>';
@@ -149,16 +149,16 @@
 		}
 		
 		public function test_link_with_method_put() {
-			$html = $this->getMock('HtmlHelper',array('js'),array($this->request,'pt-BR'));
+			$html = $this->getMock('HtmlHelper', array('js'), array(&$this->request,'pt-BR'));
 			
 			$html->expects($this->once())->method('js')->with($this->equalTo('vendor/drumon-jquery'));
 			
 			$result = $html->link('Title','url',array('method'=>'put'));
-			$this->assertEquals('<a href="url" data-method="put" >Title</a>',$result);
+			$this->assertEquals('<a href="url" data-method="put" >Title</a>', $result);
 		}
 		
 		public function test_link_with_confirm() {
-			$html = $this->getMock('HtmlHelper',array('js'),array($this->request,'pt-BR'));
+			$html = $this->getMock('HtmlHelper', array('js'), array(&$this->request));
 			
 			$html->expects($this->once())->method('js')->with($this->equalTo('vendor/drumon-jquery'));
 			
@@ -186,6 +186,11 @@
 		public function test_form_with_options() {
 			$result = $this->html->form('comment',array('id'=>'comment'));
 			$this->assertEquals('<form action="comment" method="post" id="comment" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="post">',$result);
+		}
+		
+		public function test_form_with_options_file() {
+			$result = $this->html->form('comment',array('file'=>true));
+			$this->assertEquals('<form action="comment" method="post" enctype="multipart/form-data" ><input type="hidden" name="_token" value="token"><input type="hidden" name="_method" value="post">',$result);
 		}
 		
 		
@@ -240,7 +245,6 @@
 			$result = $this->html->select_date_years('date',2000,2002);
 			$this->assertEquals('<select name="date" ><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option></select>',$result);
 		}
-		
 		
 		// Method: select_date_months
 		public function test_select_date_months() {

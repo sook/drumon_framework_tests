@@ -36,8 +36,17 @@
 			}
 		}
 		
-		public function default_scope() {
+		public function default_scope2() {
 			return $this->order('blog_posts.id DESC');
+		}
+		
+		public function default_scope() {
+			return $this->select('blog_posts.id')->join('INNER JOIN core_users ON core_users.id = blog_posts.user_id')->active();
+		}
+
+		public function active() 
+		{
+			return $this->where($this->table_name.'.status = ?', array(1));
 		}
 		
 		public function print_title() {

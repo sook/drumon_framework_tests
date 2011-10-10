@@ -7,7 +7,7 @@
 		
 		
 		public function setUp() {
-			$this->request = $this->getMock('RequestHandler',array(),array(array()));
+			$this->request = $this->getMock('Request',array(),array(array(),APP_PATH));
 			$this->text = new TextHelper($this->request,'pt-BR');
 		}
 		

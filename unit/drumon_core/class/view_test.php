@@ -4,7 +4,6 @@
 
 	class ViewTest extends PHPUnit_Framework_TestCase {
 		
-		
 		public function setUp() {
 			$this->view = new View(array(), false);
 		}
@@ -14,7 +13,7 @@
 		public function test_render_file() {
 			$result = $this->view->render_file(ASSETS_PATH.'/view_test1.php');
 			
-			$this->assertEquals('Hello',$result);
+			$this->assertEquals('Hello', $result);
 		}
 		
 		public function test_render_file_and_var() {
@@ -45,15 +44,6 @@
 			$view->expects($this->once())->method('render_file')->with(APP_PATH.'/me.php');
 			
 			$view->render('/me');
-		}
-		
-		
-		// Method: partial
-		public function test_partial() {
-			$view = $this->getMock('View',array('render_file'),array(array(),false));
-			$view->expects($this->once())->method('render_file')->with(APP_PATH.'/app/views/partials/me.php');
-			
-			$view->partial('me');
 		}
 		
 				
@@ -99,6 +89,9 @@
 			
 			$this->assertEquals(0,count($this->view->get_all()));
 		}
+		
+		
+		
 		
 		
 	}

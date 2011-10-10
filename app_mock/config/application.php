@@ -6,6 +6,9 @@
 	// Linguagem da sua apicação. (pt-BR|en-US|...)
 	$app->config['language'] = 'pt-BR';
 	
+	// Set application charset
+	$app->config['charset'] = 'utf-8';
+	
 	// Helpers carregados automaticamente. (html,date,text,url,image)
 	//$app->add_helpers(array('html','date','text','url','image'));
 	

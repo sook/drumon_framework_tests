@@ -4,9 +4,9 @@ Feature: Check internacionalization system
 	I want to see these texts translated
 
 	Scenario: Hello World
-		Given I am on /translate
+		Given I am on "/translate"
 		Then I should see "Olá Mundo"
 				
 	Scenario: Hello Boy
-		Given I am on /translate
+		Given I am on "/translate"
 		Then I should see "Olá Garoto"

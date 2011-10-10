@@ -4,9 +4,9 @@ Feature: Check namespace system
 	I want to see application working
 
 	Scenario: Simple namespace
-		Given I am on /simple-namespace
+		Given I am on "/simple-namespace"
 		Then I should see "namespace"
 	
 	Scenario: Complex namespace
-		Given I am on /complex-namespace
+		Given I am on "/complex-namespace"
 		Then I should see "complex namespace"

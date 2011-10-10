@@ -2,14 +2,14 @@
 
 	require_once CORE_PATH. '/class/helper.php';
 	require_once CORE_PATH. '/helpers/text_helper.php';
-	require_once CORE_PATH. '/class/request_handler.php';
+	require_once CORE_PATH. '/class/request.php';
 	
 	class HelperTest extends PHPUnit_Framework_TestCase {
 		
 		
 		// Method: sprintf2
 		public function test_sprintf2_with_one_value() {
-			$this->request = $this->getMock('RequestHandler',array(),array(array()));
+			$this->request = $this->getMock('Request',array(),array(array(), APP_PATH));
 			$this->helper = new TextHelper($this->request,'pt-BR');
 			
 			$text = "hello world %name";
@@ -19,7 +19,7 @@
 		}
 		
 		public function test_sprintf2_with_two_values() {
-			$this->request = $this->getMock('RequestHandler',array(),array(array()));
+			$this->request = $this->getMock('Request',array(),array(array(), APP_PATH));
 			$this->helper = new TextHelper($this->request,'pt-BR');
 			
 			$text = "hello world %name! you are %X";
@@ -29,7 +29,7 @@
 		}
 		
 		public function test_sprintf2_without_value() {
-			$this->request = $this->getMock('RequestHandler',array(),array(array()));
+			$this->request = $this->getMock('Request',array(),array(array(), APP_PATH));
 			$this->helper = new TextHelper($this->request,'pt-BR');
 			
 			$text = "hello world %name";

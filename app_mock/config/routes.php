@@ -23,41 +23,42 @@
 	
 	
 	// Rota para o inicio da aplicação
-	$route['get']['/'] = array('Home','index','as'=>'home'); // $url->to_home();
-	$route['get']['/about'] = array('Home','about','as'=>'about'); // $url->to_home();
+	$route['get']['/'] = array('Home::index','as'=>'home'); // $url->to_home();
+	$route['get']['/about'] = array('Home::about','as'=>'about'); // $url->to_home();
 	$route['*']['/danillos'] = array('redirect'=>'http://www.danillocesar.com.br','as'=>'danillos_blog');
-	$route['*']['/variables/:var'] = array('Home','variables');
+	$route['*']['/variables/{var}'] = array('Home::variables');
 	
 	//namespace
-	$route['get']['/simple-namespace'] = array('Namespace_Home','index');
-	$route['get']['/complex-namespace'] = array('ComplexNamespace_Home','index');
+	$route['get']['/simple-namespace'] = array('Namespace_Home::index');
+	$route['get']['/complex-namespace'] = array('ComplexNamespace_Home::index');
 	
 	// csfr
-	$route['*']['/csfr'] = array('Csfr','form');
-	$route['*']['/csfr-invalid'] = array('Csfr','form2');
+	$route['*']['/csfr'] = array('Csfr::form');
+	$route['*']['/csfr-invalid'] = array('Csfr::form2');
 	
 	// http status
-	$route['*']['/render-erro-404-page'] = array('HttpStatus','render_erro_404');
-	$route['*']['/status-403-page'] = array('HttpStatus','status_403');
+	$route['*']['/render-erro-404-page'] = array('HttpStatus::render_erro_404');
+	$route['*']['/status-403-page'] = array('HttpStatus::status_403');
 	
 	// i18n
-	$route['*']['/translate'] = array('Locale','index');
+	$route['*']['/translate'] = array('Locale::index');
 	
 	//before
-	$route['*']['/before_after/simple'] = array('BeforeAfter','simple');
-	$route['*']['/before_after/test_only'] = array('BeforeAfter','test_only');
+	$route['*']['/before_after/simple'] = array('BeforeAfter::simple');
+	$route['*']['/before_after/test_only'] = array('BeforeAfter::test_only');
 	
 	//drumon_model
-	$route['*']['/orm/queries'] = array('Orm','queries');
-	$route['*']['/orm/queries/page/:page'] = array('Orm','queries');
-	$route['*']['/orm/inserts/'] = array('Orm','inserts');
-	$route['*']['/orm/increments/'] = array('Orm','increment_decrement');
-	$route['*']['/orm/hooks/'] = array('Orm','hooks');
+	$route['*']['/orm/queries'] = array('Orm::queries');
+	$route['*']['/orm/queries/page/{page}'] = array('Orm::queries');
+	$route['*']['/orm/inserts/'] = array('Orm::inserts');
+	$route['*']['/orm/increments/'] = array('Orm::increment_decrement');
+	$route['*']['/orm/hooks/'] = array('Orm::hooks');
+	$route['*']['/orm/dev/'] = array('Orm::dev');
 	
 	// Redirects
-	$route['*']['/redirects/simple'] = array('Redirect','simple_redirect');
-	$route['*']['/redirects/internal'] = array('Redirect','named_redirect_internal');
-	$route['*']['/redirects/internal-2'] = array('Redirect','named_redirect_internal_with_params');
-	$route['*']['/redirects/external'] = array('Redirect','named_redirect_external');
-	$route['*']['/redirects/test_page/:name'] = array('Redirect','test_page', 'as'=>'test_page');
+	$route['*']['/redirects/simple'] = array('Redirect::simple_redirect');
+	$route['*']['/redirects/internal'] = array('Redirect::named_redirect_internal');
+	$route['*']['/redirects/internal-2'] = array('Redirect::named_redirect_internal_with_params');
+	$route['*']['/redirects/external'] = array('Redirect::named_redirect_external');
+	$route['*']['/redirects/test_page/:name'] = array('Redirect::test_page', 'as'=>'test_page');
 ?>

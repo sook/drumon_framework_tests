@@ -1,7 +1,4 @@
 default:
-    environment:
-        parameters:
-            start_url: http://localhost/sook/drumon/drumon_framework_tests/app_mock/
-            browser: firefox
-imports:
-    - mink/behat.yml
+  context:
+    parameters:
+      base_url: http://localhost/sook/drumon/drumon_framework_tests/app_mock/
